@@ -1,7 +1,9 @@
 <template>
   <span class="inline-flex items-center gap-2.5">
     <img
-      :src="src"
+      :src="LOGO_SRC"
+      :srcset="LOGO_SRCSET"
+      :sizes="`${sizes[size].px}px`"
       :alt="LOGO_HAS_TEXT ? 'LapoTa' : ''"
       :width="sizes[size].px"
       :height="sizes[size].px"
@@ -21,15 +23,13 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-
 // ====== UBAH BAGIAN INI SAJA UNTUK MEMASANG LOGO BARU ======
-const LOGO_SRC = "/logo.webp"; // logo untuk latar terang (navbar)
-const LOGO_SRC_LIGHT = "/logo.webp"; // logo untuk latar gelap (footer & panel merah); boleh sama
+const LOGO_SRC = "/logo-64.webp";
+const LOGO_SRCSET = "/logo-64.webp 64w, /logo-128.webp 128w";
 const LOGO_HAS_TEXT = false; // true jika gambar logo sudah memuat tulisan "LapoTa"
 // ============================================================
 
-const props = defineProps({
+defineProps({
   size: { type: String, default: "md" }, // sm | md | lg | xl
   tone: { type: String, default: "dark" }, // dark = latar terang, light = latar gelap
 });
@@ -41,5 +41,4 @@ const sizes = {
   xl: { img: "h-16", px: 64, text: "text-3xl" },
 };
 
-const src = computed(() => (props.tone === "light" ? LOGO_SRC_LIGHT : LOGO_SRC));
 </script>

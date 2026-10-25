@@ -7,4 +7,8 @@ import "./index.css";
 const app = createApp(App);
 app.use(createPinia());
 app.use(router);
-app.mount("#app");
+// Tahan mount sampai rute pertama siap agar tampilan awal di index.html tidak kosong
+router
+  .isReady()
+  .catch(() => {})
+  .then(() => app.mount("#app"));

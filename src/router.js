@@ -2,13 +2,11 @@ import { createRouter, createWebHistory } from "vue-router";
 import { useAuthStore } from "./stores/authStore";
 
 import MainLayout from "./layouts/MainLayout.vue";
-import AuthLayout from "./layouts/AuthLayout.vue";
-import SellerLayout from "./layouts/SellerLayout.vue";
 
 export const routes = [
   {
     path: "/auth",
-    component: AuthLayout,
+    component: () => import("./layouts/AuthLayout.vue"),
     meta: { guestOnly: true },
     children: [
       { path: "login", name: "login", component: () => import("./pages/auth/LoginPage.vue") },
@@ -32,7 +30,7 @@ export const routes = [
       },
       {
         path: "penjual",
-        component: SellerLayout,
+        component: () => import("./layouts/SellerLayout.vue"),
         meta: { requiresAuth: true, role: "seller" },
         children: [
           { path: "", name: "seller-dashboard", component: () => import("./pages/seller/SellerDashboardPage.vue") },
@@ -49,7 +47,11 @@ export function createAppRouter(history = createWebHistory()) {
   const router = createRouter({
     history,
     routes,
-    scrollBehavior: () => ({ top: 0 }),
+    scrollBehavior: (to, from, savedPosition) => {
+      if (savedPosition) return savedPosition;
+      if (from.matched.length === 0 || to.path === from.path) return false; // navigasi awal: tidak perlu scroll
+      return { top: 0 };
+    },
   });
 
   router.beforeEach(async (to) => {
