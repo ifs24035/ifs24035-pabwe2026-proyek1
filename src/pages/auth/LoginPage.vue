@@ -1,12 +1,15 @@
 <template>
   <form class="space-y-4" @submit.prevent="submit">
     <div>
-      <label class="mb-1.5 block text-xs font-bold uppercase tracking-wide text-stone-600">Email</label>
+      <label for="username" class="mb-1.5 block text-xs font-bold uppercase tracking-wide text-stone-600">Email</label>
       <div class="relative">
         <Mail :size="18" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
         <input
+          id="username"
+          name="username"
           v-model="email"
           type="email"
+          autocomplete="username"
           required
           placeholder="nama@email.com"
           data-testid="login-email"
@@ -15,12 +18,15 @@
       </div>
     </div>
     <div>
-      <label class="mb-1.5 block text-xs font-bold uppercase tracking-wide text-stone-600">Kata sandi</label>
+      <label for="password" class="mb-1.5 block text-xs font-bold uppercase tracking-wide text-stone-600">Kata sandi</label>
       <div class="relative">
         <Lock :size="18" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
         <input
+          id="password"
+          name="password"
           v-model="password"
           type="password"
+          autocomplete="current-password"
           required
           placeholder="••••••••"
           data-testid="login-password"
@@ -29,6 +35,7 @@
       </div>
     </div>
     <button
+      id="btn-submit"
       type="submit"
       :disabled="auth.loading"
       data-testid="login-submit"
