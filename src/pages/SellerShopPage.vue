@@ -1,5 +1,5 @@
 <template>
-  <div v-if="loading" class="py-20 text-center text-stone-500">Memuat toko...</div>
+  <div v-if="loading" class="py-20 text-center text-stone-600">Memuat toko...</div>
   <div v-else-if="!shop" class="py-20 text-center">
     <p class="text-5xl">🏚️</p>
     <p class="mt-2 font-bold">Toko tidak ditemukan</p>
@@ -10,7 +10,7 @@
         <span class="flex h-20 w-20 items-center justify-center rounded-2xl bg-ulos-50 text-4xl">🏪</span>
         <div>
           <h1 class="text-2xl font-extrabold">{{ shop.shop_name }}</h1>
-          <p class="mt-1 flex items-center gap-1.5 text-sm text-stone-500">
+          <p class="mt-1 flex items-center gap-1.5 text-sm text-stone-600">
             <MapPin :size="14" /> {{ shop.location || "Toba" }}
             <template v-if="shop.phone"> · <Phone :size="14" /> {{ shop.phone }}</template>
           </p>
@@ -20,7 +20,7 @@
     </section>
 
     <h2 class="mb-4 mt-8 text-xl font-extrabold">Produk dari toko ini ({{ shop.products.length }})</h2>
-    <p v-if="!shop.products.length" class="text-stone-500">Belum ada produk.</p>
+    <p v-if="!shop.products.length" class="text-stone-600">Belum ada produk.</p>
     <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
       <ProductCard v-for="p in shop.products" :key="p.id" :product="p" />
     </div>

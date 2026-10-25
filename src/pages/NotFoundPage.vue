@@ -3,7 +3,7 @@
     <div class="max-w-md text-center">
       <p class="text-7xl font-black text-ulos-600">404</p>
       <h1 class="mt-3 text-2xl font-extrabold">Halaman Tidak Ditemukan</h1>
-      <p class="mt-2 text-stone-500">Halaman yang kamu cari tidak tersedia atau sudah dipindahkan.</p>
+      <p class="mt-2 text-stone-600">Halaman yang kamu cari tidak tersedia atau sudah dipindahkan.</p>
       <div class="mt-6 flex justify-center gap-3">
         <button
           type="button"

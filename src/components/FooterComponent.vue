@@ -44,7 +44,7 @@
       </div>
     </div>
     <div class="border-t border-white/10">
-      <p class="mx-auto max-w-7xl px-4 py-4 text-xs text-stone-500 sm:px-6 lg:px-8">
+      <p class="mx-auto max-w-7xl px-4 py-4 text-xs text-stone-400 sm:px-6 lg:px-8">
         © 2026 LapoTa · Proyek PABWE · Institut Teknologi Del · Horas! 🌿
       </p>
     </div>

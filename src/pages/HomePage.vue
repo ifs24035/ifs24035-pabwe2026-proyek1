@@ -18,12 +18,12 @@
 
           <form class="mt-6 flex max-w-lg gap-2" @submit.prevent="search">
             <div class="relative flex-1">
-              <Search :size="18" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
+              <Search :size="18" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-600" />
               <input
                 v-model="keyword"
                 type="search"
                 placeholder="Cari kopi, ulos, ikan mas..."
-                class="w-full rounded-xl border-0 bg-white py-3 pl-10 pr-3 text-sm font-medium text-stone-900 shadow-lg placeholder:text-stone-500 focus:outline-none focus:ring-4 focus:ring-gold-300/50"
+                class="w-full rounded-xl border-0 bg-white py-3 pl-10 pr-3 text-sm font-medium text-stone-900 shadow-lg placeholder:text-stone-600 focus:outline-none focus:ring-4 focus:ring-gold-300/50"
               />
             </div>
             <button type="submit" class="rounded-xl bg-gold-400 px-5 py-3 text-sm font-bold text-stone-900 shadow-lg hover:bg-gold-300">
@@ -73,7 +73,7 @@
           <component :is="b.icon" :size="22" />
         </span>
         <p class="mt-3 font-bold">{{ b.title }}</p>
-        <p class="mt-1 text-sm leading-relaxed text-stone-500">{{ b.text }}</p>
+        <p class="mt-1 text-sm leading-relaxed text-stone-600">{{ b.text }}</p>
       </div>
     </section>
 
@@ -81,7 +81,7 @@
     <section>
       <div class="mb-5">
         <h2 class="section-title">Jelajahi Kategori</h2>
-        <p class="text-sm text-stone-500">Pilih sesuai yang kamu cari.</p>
+        <p class="text-sm text-stone-600">Pilih sesuai yang kamu cari.</p>
       </div>
       <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
         <RouterLink
@@ -106,7 +106,7 @@
       <div class="mb-5 flex items-end justify-between">
         <div>
           <h2 class="section-title">Produk Terbaru</h2>
-          <p class="text-sm text-stone-500">Baru ditambahkan oleh para penjual.</p>
+          <p class="text-sm text-stone-600">Baru ditambahkan oleh para penjual.</p>
         </div>
         <RouterLink to="/produk" class="text-sm font-semibold text-ulos-600 hover:underline">
           Lihat semua →
@@ -140,7 +140,7 @@
     <section v-if="sellers.length">
       <div class="mb-5">
         <h2 class="section-title">Toko &amp; Mitra UMKM</h2>
-        <p class="text-sm text-stone-500">Kenali pelaku usaha di balik produk-produk ini.</p>
+        <p class="text-sm text-stone-600">Kenali pelaku usaha di balik produk-produk ini.</p>
       </div>
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <RouterLink
@@ -152,7 +152,7 @@
           <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-ulos-50 text-2xl">🏪</span>
           <div class="min-w-0">
             <p class="truncate font-bold">{{ s.shop_name }}</p>
-            <p class="flex items-center gap-1 text-xs text-stone-500">
+            <p class="flex items-center gap-1 text-xs text-stone-600">
               <MapPin :size="12" /> {{ s.location || "Toba" }} · {{ s.product_count }} produk
             </p>
             <p class="mt-1 line-clamp-2 text-sm text-stone-600">{{ s.description }}</p>

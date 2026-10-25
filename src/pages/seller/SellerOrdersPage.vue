@@ -13,20 +13,20 @@
       </button>
     </div>
 
-    <div v-if="loading" class="py-16 text-center text-stone-500">Memuat pesanan...</div>
-    <p v-else-if="!shown.length" class="py-16 text-center text-stone-500">Tidak ada pesanan.</p>
+    <div v-if="loading" class="py-16 text-center text-stone-600">Memuat pesanan...</div>
+    <p v-else-if="!shown.length" class="py-16 text-center text-stone-600">Tidak ada pesanan.</p>
     <div v-else class="space-y-4">
       <article v-for="o in shown" :key="o.id" class="rounded-2xl border border-stone-200 bg-white">
         <header class="flex flex-wrap items-center justify-between gap-2 border-b border-stone-100 px-5 py-3">
           <div>
             <p class="font-bold">Pesanan #{{ o.id }} · {{ o.buyer_name }}</p>
-            <p class="text-xs text-stone-500">{{ formatDate(o.created_at) }}</p>
+            <p class="text-xs text-stone-600">{{ formatDate(o.created_at) }}</p>
           </div>
           <StatusBadge :status="o.status" />
         </header>
         <ul class="divide-y divide-stone-100 px-5">
           <li v-for="it in o.items" :key="it.id" class="flex justify-between py-2.5 text-sm">
-            <span>{{ it.product_name }} <span class="text-stone-500">× {{ it.quantity }}</span></span>
+            <span>{{ it.product_name }} <span class="text-stone-600">× {{ it.quantity }}</span></span>
             <span class="font-semibold">{{ formatRupiah(it.price * it.quantity) }}</span>
           </li>
         </ul>

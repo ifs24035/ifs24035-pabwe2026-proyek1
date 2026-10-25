@@ -11,13 +11,13 @@
       </button>
     </div>
 
-    <div v-if="loading" class="py-16 text-center text-stone-500">Memuat produk...</div>
-    <p v-else-if="!products.length" class="py-16 text-center text-stone-500">
+    <div v-if="loading" class="py-16 text-center text-stone-600">Memuat produk...</div>
+    <p v-else-if="!products.length" class="py-16 text-center text-stone-600">
       Belum ada produk. Tambahkan produk pertamamu!
     </p>
     <div v-else class="overflow-x-auto rounded-2xl border border-stone-200 bg-white">
       <table class="w-full min-w-[640px] text-left text-sm">
-        <thead class="bg-stone-50 text-xs uppercase tracking-wide text-stone-500">
+        <thead class="bg-stone-50 text-xs uppercase tracking-wide text-stone-600">
           <tr>
             <th class="px-4 py-3">Produk</th>
             <th class="px-4 py-3">Kategori</th>
@@ -49,10 +49,20 @@
               </span>
             </td>
             <td class="px-4 py-3 text-right">
-              <button type="button" class="rounded-lg p-2 text-stone-500 hover:bg-stone-100" @click="openForm(p)">
+              <button
+                type="button"
+                class="rounded-lg p-2 text-stone-600 hover:bg-stone-100"
+                :aria-label="`Ubah ${p.name}`"
+                @click="openForm(p)"
+              >
                 <Pencil :size="16" />
               </button>
-              <button type="button" class="rounded-lg p-2 text-red-500 hover:bg-red-50" @click="remove(p)">
+              <button
+                type="button"
+                class="rounded-lg p-2 text-red-700 hover:bg-red-50"
+                :aria-label="`Hapus ${p.name}`"
+                @click="remove(p)"
+              >
                 <Trash2 :size="16" />
               </button>
             </td>
@@ -84,8 +94,8 @@
         </div>
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="mb-1 block text-xs font-bold uppercase text-stone-600">Kategori</label>
-            <select v-model="form.category_id" required class="field">
+            <label for="product-category" class="mb-1 block text-xs font-bold uppercase text-stone-600">Kategori</label>
+            <select id="product-category" v-model="form.category_id" required class="field">
               <option value="" disabled>Pilih...</option>
               <option v-for="c in catalog.categories" :key="c.id" :value="c.id">{{ c.name }}</option>
             </select>

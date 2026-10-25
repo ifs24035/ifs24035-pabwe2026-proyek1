@@ -27,11 +27,12 @@
           Belanja kopi, ulos, ikan danau, dan hasil bumi asli Toba, langsung dari petani dan UMKM.
         </p>
       </div>
-      <p class="text-sm text-white/60">Proyek PABWE · Institut Teknologi Del</p>
+      <p class="text-sm text-white/80">Proyek PABWE · Institut Teknologi Del</p>
     </aside>
 
     <!-- Formulir -->
     <main class="flex flex-col justify-center bg-cream px-4 py-10 sm:px-8">
+      <h1 class="sr-only">{{ route.name === 'register' ? 'Daftar akun LapoTa' : 'Masuk ke LapoTa' }}</h1>
       <div class="mx-auto w-full max-w-md">
         <RouterLink to="/" class="mb-6 flex justify-center lg:hidden" aria-label="LapoTa - beranda">
           <AppLogo size="xl" />
@@ -56,7 +57,7 @@
           </div>
           <RouterView />
         </div>
-        <RouterLink to="/" class="mt-5 block text-center text-sm text-stone-500 hover:text-ulos-700">
+        <RouterLink to="/" class="mt-5 block text-center text-sm text-stone-600 hover:text-ulos-700">
           ← Kembali ke beranda
         </RouterLink>
       </div>

@@ -11,7 +11,7 @@
       >
         <span class="text-xl">{{ r.icon }}</span>
         <p class="text-sm font-bold">{{ r.label }}</p>
-        <p class="text-xs text-stone-500">{{ r.desc }}</p>
+        <p class="text-xs text-stone-600">{{ r.desc }}</p>
       </button>
     </div>
 

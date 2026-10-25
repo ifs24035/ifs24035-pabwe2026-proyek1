@@ -2,13 +2,13 @@
   <div>
     <div class="flex flex-col gap-1">
       <h1 class="section-title">Semua Produk</h1>
-      <p class="text-sm text-stone-500">Temukan hasil bumi dan produk UMKM khas Toba.</p>
+      <p class="text-sm text-stone-600">Temukan hasil bumi dan produk UMKM khas Toba.</p>
     </div>
 
     <!-- Pencarian & urutan -->
     <div class="mt-5 flex flex-col gap-3 sm:flex-row">
       <div class="relative flex-1">
-        <Search :size="18" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
+        <Search :size="18" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-600" />
         <input
           v-model="search"
           type="search"
@@ -18,6 +18,7 @@
       </div>
       <select
         v-model="sort"
+        aria-label="Urutkan produk"
         class="rounded-xl border border-stone-200 bg-white px-3 py-2.5 text-sm focus:border-ulos-600 focus:outline-none sm:w-52"
       >
         <option value="newest">Urutkan: Terbaru</option>
@@ -56,12 +57,12 @@
     <div v-else-if="!items.length" class="py-16 text-center">
       <p class="text-5xl">🔍</p>
       <p class="mt-2 text-lg font-bold">Produk tidak ditemukan</p>
-      <p class="text-sm text-stone-500">Coba kata kunci atau kategori yang lain.</p>
+      <p class="text-sm text-stone-600">Coba kata kunci atau kategori yang lain.</p>
       <button type="button" class="btn-outline mt-4" @click="resetFilters">Reset pencarian</button>
     </div>
 
     <template v-else>
-      <p class="mt-4 text-sm text-stone-500">
+      <p class="mt-4 text-sm text-stone-600">
         Menampilkan <b class="text-stone-800">{{ pagination.total }}</b> produk
       </p>
       <div class="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">

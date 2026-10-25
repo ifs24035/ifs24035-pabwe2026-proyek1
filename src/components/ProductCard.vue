@@ -38,11 +38,11 @@
       </RouterLink>
       <RouterLink
         :to="`/toko/${product.seller_id}`"
-        class="mt-1.5 flex items-center gap-1.5 text-xs text-stone-500 hover:text-ulos-700"
+        class="mt-1.5 flex items-center gap-1.5 text-xs text-stone-600 hover:text-ulos-700"
       >
         <Store :size="13" />
         <span class="truncate">{{ product.shop_name }}</span>
-        <span v-if="product.seller_location" class="shrink-0 text-stone-400">
+        <span v-if="product.seller_location" class="shrink-0 text-stone-600">
           · {{ product.seller_location }}
         </span>
       </RouterLink>
@@ -52,7 +52,7 @@
           <p class="text-lg font-extrabold leading-none text-ulos-700">
             {{ formatRupiah(product.price) }}
           </p>
-          <p class="mt-1 text-xs text-stone-500">per {{ product.unit }}</p>
+          <p class="mt-1 text-xs text-stone-600">per {{ product.unit }}</p>
         </div>
         <button
           v-if="!auth.isSeller"

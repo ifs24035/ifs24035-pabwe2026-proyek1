@@ -3,7 +3,7 @@
     <div>
       <label for="username" class="mb-1.5 block text-xs font-bold uppercase tracking-wide text-stone-600">Email</label>
       <div class="relative">
-        <Mail :size="18" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
+        <Mail :size="18" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-600" />
         <input
           id="username"
           name="username"
@@ -20,7 +20,7 @@
     <div>
       <label for="password" class="mb-1.5 block text-xs font-bold uppercase tracking-wide text-stone-600">Kata sandi</label>
       <div class="relative">
-        <Lock :size="18" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
+        <Lock :size="18" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-600" />
         <input
           id="password"
           name="password"
@@ -43,7 +43,7 @@
     >
       {{ auth.loading ? "Sedang masuk..." : "Masuk" }}
     </button>
-    <p class="rounded-xl bg-stone-50 p-3 text-xs text-stone-500">
+    <p class="rounded-xl bg-stone-50 p-3 text-xs text-stone-600">
       Akun demo (password <b>password123</b>): pembeli@lapota.id · penjual1@lapota.id
     </p>
   </form>

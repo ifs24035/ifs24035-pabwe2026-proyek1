@@ -7,7 +7,7 @@
       </RouterLink>
 
       <form class="relative mx-auto hidden max-w-xl flex-1 md:block" @submit.prevent="search">
-        <Search :size="18" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
+        <Search :size="18" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-600" />
         <input
           v-model="keyword"
           type="search"
@@ -58,7 +58,7 @@
             <span class="hidden max-w-28 truncate text-sm font-semibold sm:block">
               {{ auth.user.name }}
             </span>
-            <ChevronDown :size="16" class="text-stone-400" />
+            <ChevronDown :size="16" class="text-stone-600" />
           </button>
           <div
             v-if="open"
@@ -66,7 +66,7 @@
           >
             <div class="px-3 py-2">
               <p class="truncate text-sm font-semibold">{{ auth.user.name }}</p>
-              <p class="truncate text-xs text-stone-500">{{ auth.user.email }}</p>
+              <p class="truncate text-xs text-stone-600">{{ auth.user.email }}</p>
               <p class="mt-1 text-xs font-semibold text-ulos-600">
                 {{ auth.isSeller ? auth.user.seller?.shop_name : "Pembeli" }}
               </p>
@@ -115,7 +115,7 @@
 
     <!-- Pencarian untuk layar kecil -->
     <form class="relative px-4 pb-3 md:hidden" @submit.prevent="search">
-      <Search :size="18" class="absolute left-7 top-[calc(50%-6px)] -translate-y-1/2 text-stone-400" />
+      <Search :size="18" class="absolute left-7 top-[calc(50%-6px)] -translate-y-1/2 text-stone-600" />
       <input
         v-model="keyword"
         type="search"
@@ -133,7 +133,7 @@
       v-for="item in mobileItems"
       :key="item.to"
       :to="item.to"
-      class="relative flex flex-col items-center gap-0.5 py-2 text-[11px] font-semibold text-stone-500"
+      class="relative flex flex-col items-center gap-0.5 py-2 text-[11px] font-semibold text-stone-600"
       :active-class="item.exact ? '' : '!text-ulos-700'"
       exact-active-class="!text-ulos-700"
     >

@@ -1,14 +1,14 @@
 <template>
-  <div v-if="loading" class="py-16 text-center text-stone-500">Memuat ringkasan...</div>
+  <div v-if="loading" class="py-16 text-center text-stone-600">Memuat ringkasan...</div>
   <div v-else class="space-y-6">
     <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <div v-for="c in cards" :key="c.label" class="rounded-2xl border border-stone-200 bg-white p-5">
         <div class="flex items-center justify-between">
-          <p class="text-sm font-semibold text-stone-500">{{ c.label }}</p>
+          <p class="text-sm font-semibold text-stone-600">{{ c.label }}</p>
           <component :is="c.icon" :size="20" class="text-ulos-600" />
         </div>
         <p class="mt-2 text-2xl font-extrabold">{{ c.value }}</p>
-        <p v-if="c.hint" class="text-xs" :class="c.alert ? 'text-red-600' : 'text-stone-500'">{{ c.hint }}</p>
+        <p v-if="c.hint" class="text-xs" :class="c.alert ? 'text-red-600' : 'text-stone-600'">{{ c.hint }}</p>
       </div>
     </div>
 
@@ -17,12 +17,12 @@
         <h2 class="font-extrabold">Pesanan Terbaru</h2>
         <RouterLink to="/penjual/pesanan" class="text-sm font-semibold text-ulos-600">Kelola →</RouterLink>
       </header>
-      <p v-if="!recent.length" class="p-6 text-center text-sm text-stone-500">Belum ada pesanan masuk.</p>
+      <p v-if="!recent.length" class="p-6 text-center text-sm text-stone-600">Belum ada pesanan masuk.</p>
       <ul v-else class="divide-y divide-stone-100">
         <li v-for="o in recent" :key="o.id" class="flex items-center justify-between gap-3 px-5 py-3 text-sm">
           <div>
             <p class="font-bold">#{{ o.id }} · {{ o.buyer_name }}</p>
-            <p class="text-xs text-stone-500">{{ formatDate(o.created_at) }}</p>
+            <p class="text-xs text-stone-600">{{ formatDate(o.created_at) }}</p>
           </div>
           <div class="flex items-center gap-3">
             <span class="font-semibold">{{ formatRupiah(o.total) }}</span>

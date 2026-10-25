@@ -35,7 +35,7 @@
                 <RouterLink :to="`/produk/${item.product_id}`" class="line-clamp-2 font-bold hover:text-ulos-700">
                   {{ item.name }}
                 </RouterLink>
-                <p class="text-sm text-stone-500">{{ formatRupiah(item.price) }} / {{ item.unit }}</p>
+                <p class="text-sm text-stone-600">{{ formatRupiah(item.price) }} / {{ item.unit }}</p>
                 <div class="mt-2 flex items-center justify-between">
                   <div class="flex items-center rounded-lg border border-stone-200">
                     <button
@@ -61,7 +61,7 @@
               </div>
               <button
                 type="button"
-                class="self-start rounded-lg p-2 text-stone-400 hover:bg-red-50 hover:text-red-600"
+                class="self-start rounded-lg p-2 text-stone-600 hover:bg-red-50 hover:text-red-600"
                 aria-label="Hapus"
                 @click="cart.remove(item.product_id)"
               >
@@ -76,7 +76,7 @@
         <h2 class="text-lg font-extrabold">Ringkasan Pesanan</h2>
         <dl class="mt-3 space-y-1 text-sm">
           <div class="flex justify-between">
-            <dt class="text-stone-500">Total item</dt>
+            <dt class="text-stone-600">Total item</dt>
             <dd class="font-semibold">{{ cart.count }}</dd>
           </div>
           <div class="flex justify-between text-base">
@@ -112,7 +112,7 @@
           <p v-if="cart.groups.length > 1" class="rounded-lg bg-amber-50 p-2 text-xs text-amber-800">
             Pesananmu akan dipecah menjadi {{ cart.groups.length }} pesanan, satu untuk tiap toko.
           </p>
-          <p class="text-xs text-stone-500">Pembayaran dilakukan langsung dengan penjual (COD / transfer manual).</p>
+          <p class="text-xs text-stone-600">Pembayaran dilakukan langsung dengan penjual (COD / transfer manual).</p>
           <button
             type="submit"
             :disabled="loading"

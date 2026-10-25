@@ -12,7 +12,7 @@
   </div>
   <div v-else>
     <!-- Remah roti -->
-    <nav class="mb-5 flex flex-wrap items-center gap-1.5 text-sm text-stone-500">
+    <nav class="mb-5 flex flex-wrap items-center gap-1.5 text-sm text-stone-600">
       <RouterLink to="/" class="hover:text-ulos-700">Beranda</RouterLink> <ChevronRight :size="14" />
       <RouterLink to="/produk" class="hover:text-ulos-700">Produk</RouterLink> <ChevronRight :size="14" />
       <RouterLink :to="{ name: 'products', query: { category: product.category_slug } }" class="hover:text-ulos-700">
@@ -42,11 +42,11 @@
           <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-ulos-50 text-xl">🏪</span>
           <div class="min-w-0">
             <p class="truncate text-sm font-bold">{{ product.shop_name }}</p>
-            <p class="flex items-center gap-1 text-xs text-stone-500">
+            <p class="flex items-center gap-1 text-xs text-stone-600">
               <MapPin :size="12" /> {{ product.seller_location || "Toba" }}
             </p>
           </div>
-          <ChevronRight :size="18" class="ml-auto text-stone-400" />
+          <ChevronRight :size="18" class="ml-auto text-stone-600" />
         </RouterLink>
 
         <div class="mt-5 rounded-2xl bg-gold-100/60 p-4">
