@@ -86,29 +86,15 @@
         </dl>
 
         <form class="mt-4 space-y-3" @submit.prevent="checkout">
-          <div>
-            <label class="mb-1 block text-xs font-bold uppercase tracking-wide text-stone-600">
-              Alamat pengiriman
-            </label>
-            <textarea
-              v-model="address"
-              rows="3"
-              required
-              placeholder="Jl. ..., Kota, Kode pos"
-              class="w-full rounded-xl border border-stone-200 px-3 py-2 text-sm focus:border-ulos-600 focus:outline-none focus:ring-2 focus:ring-ulos-600/20"
-            />
-          </div>
-          <div>
-            <label class="mb-1 block text-xs font-bold uppercase tracking-wide text-stone-600">
-              Catatan (opsional)
-            </label>
-            <input
-              v-model="note"
-              type="text"
-              placeholder="Contoh: kopi digiling halus"
-              class="w-full rounded-xl border border-stone-200 px-3 py-2 text-sm focus:border-ulos-600 focus:outline-none focus:ring-2 focus:ring-ulos-600/20"
-            />
-          </div>
+          <FormField
+            v-model="address"
+            as="textarea"
+            label="Alamat pengiriman"
+            rows="3"
+            required
+            placeholder="Jl. ..., Kota, Kode pos"
+          />
+          <FormField v-model="note" label="Catatan (opsional)" type="text" placeholder="Contoh: kopi digiling halus" />
           <p v-if="cart.groups.length > 1" class="rounded-lg bg-amber-50 p-2 text-xs text-amber-800">
             Pesananmu akan dipecah menjadi {{ cart.groups.length }} pesanan, satu untuk tiap toko.
           </p>
@@ -116,7 +102,7 @@
           <button
             type="submit"
             :disabled="loading"
-            class="w-full rounded-xl bg-ulos-600 py-3 text-sm font-semibold text-white shadow-md shadow-ulos-600/25 hover:bg-ulos-700 disabled:opacity-60"
+            class="btn-primary w-full"
           >
             {{ loading ? "Memproses..." : auth.isLoggedIn ? "Buat Pesanan" : "Masuk untuk Memesan" }}
           </button>
@@ -130,6 +116,7 @@
 import { ref } from "vue";
 import { RouterLink, useRouter } from "vue-router";
 import { Minus, Plus, Store, Trash2 } from "lucide-vue-next";
+import FormField from "../components/FormField.vue";
 import ProductImage from "../components/ProductImage.vue";
 import { useCartStore } from "../stores/cartStore";
 import { useAuthStore } from "../stores/authStore";

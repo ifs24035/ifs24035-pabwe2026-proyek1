@@ -1,17 +1,10 @@
 import axios from "axios";
+import { getToken, setToken } from "./tokenStorage";
+
+// Diekspor ulang agar pemakai lama tetap bisa mengimpor dari apiHelper
+export { getToken, setToken };
 
 export const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:5000").replace(/\/$/, "");
-const TOKEN_KEY = "lapota_token";
-
-export function getToken() {
-  return localStorage.getItem(TOKEN_KEY);
-}
-
-export function setToken(token) {
-  if (token) localStorage.setItem(TOKEN_KEY, token);
-  else localStorage.removeItem(TOKEN_KEY);
-}
-
 const http = axios.create({ baseURL: `${API_URL}/api`, timeout: 15000 });
 
 http.interceptors.request.use((config) => {

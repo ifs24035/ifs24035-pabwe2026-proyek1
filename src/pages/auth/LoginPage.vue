@@ -1,45 +1,41 @@
 <template>
   <form class="space-y-4" @submit.prevent="submit">
-    <div>
-      <label for="username" class="mb-1.5 block text-xs font-bold uppercase tracking-wide text-stone-600">Email</label>
-      <div class="relative">
+    <FormField
+      id="username"
+      v-model="email"
+      label="Email"
+      name="username"
+      type="email"
+      autocomplete="username"
+      required
+      placeholder="nama@email.com"
+      data-testid="login-email"
+    >
+      <template #icon>
         <Mail :size="18" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-600" />
-        <input
-          id="username"
-          name="username"
-          v-model="email"
-          type="email"
-          autocomplete="username"
-          required
-          placeholder="nama@email.com"
-          data-testid="login-email"
-          class="w-full rounded-xl border border-stone-200 py-2.5 pl-10 pr-3 text-sm focus:border-ulos-600 focus:outline-none focus:ring-2 focus:ring-ulos-600/20"
-        />
-      </div>
-    </div>
-    <div>
-      <label for="password" class="mb-1.5 block text-xs font-bold uppercase tracking-wide text-stone-600">Kata sandi</label>
-      <div class="relative">
+      </template>
+    </FormField>
+    <FormField
+      id="password"
+      v-model="password"
+      label="Kata sandi"
+      name="password"
+      type="password"
+      autocomplete="current-password"
+      required
+      placeholder="••••••••"
+      data-testid="login-password"
+    >
+      <template #icon>
         <Lock :size="18" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-600" />
-        <input
-          id="password"
-          name="password"
-          v-model="password"
-          type="password"
-          autocomplete="current-password"
-          required
-          placeholder="••••••••"
-          data-testid="login-password"
-          class="w-full rounded-xl border border-stone-200 py-2.5 pl-10 pr-3 text-sm focus:border-ulos-600 focus:outline-none focus:ring-2 focus:ring-ulos-600/20"
-        />
-      </div>
-    </div>
+      </template>
+    </FormField>
     <button
       id="btn-submit"
       type="submit"
       :disabled="auth.loading"
       data-testid="login-submit"
-      class="w-full rounded-xl bg-ulos-600 py-2.5 text-sm font-semibold text-white shadow-md shadow-ulos-600/25 hover:bg-ulos-700 disabled:opacity-60"
+      class="btn-primary w-full"
     >
       {{ auth.loading ? "Sedang masuk..." : "Masuk" }}
     </button>
@@ -53,6 +49,7 @@
 import { ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { Mail, Lock } from "lucide-vue-next";
+import FormField from "../../components/FormField.vue";
 import { useAuthStore } from "../../stores/authStore";
 import { showErrorDialog } from "../../helpers/toolsHelper";
 

@@ -4,7 +4,7 @@
       <h2 class="text-lg font-extrabold">Produk Saya ({{ products.length }})</h2>
       <button
         type="button"
-        class="inline-flex items-center gap-1.5 rounded-xl bg-ulos-600 px-4 py-2 text-sm font-semibold text-white hover:bg-ulos-700"
+        class="btn-primary"
         @click="openForm()"
       >
         <Plus :size="16" /> Tambah Produk
@@ -88,53 +88,39 @@
           </button>
         </div>
 
-        <div>
-          <label class="mb-1 block text-xs font-bold uppercase text-stone-600">Nama produk</label>
-          <input v-model="form.name" required minlength="3" class="field" />
-        </div>
+        <FormField v-model="form.name" label="Nama produk" required minlength="3" />
         <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label for="product-category" class="mb-1 block text-xs font-bold uppercase text-stone-600">Kategori</label>
-            <select id="product-category" v-model="form.category_id" required class="field">
-              <option value="" disabled>Pilih...</option>
-              <option v-for="c in catalog.categories" :key="c.id" :value="c.id">{{ c.name }}</option>
-            </select>
-          </div>
-          <div>
-            <label class="mb-1 block text-xs font-bold uppercase text-stone-600">Satuan</label>
-            <input v-model="form.unit" required placeholder="kg, bungkus, lembar" class="field" />
-          </div>
-          <div>
-            <label class="mb-1 block text-xs font-bold uppercase text-stone-600">Harga (Rp)</label>
-            <input v-model.number="form.price" type="number" min="0" required class="field" />
-          </div>
-          <div>
-            <label class="mb-1 block text-xs font-bold uppercase text-stone-600">Stok</label>
-            <input v-model.number="form.stock" type="number" min="0" required class="field" />
-          </div>
+          <FormField id="product-category" v-model="form.category_id" as="select" label="Kategori" required>
+            <option value="" disabled>Pilih...</option>
+            <option v-for="c in catalog.categories" :key="c.id" :value="c.id">{{ c.name }}</option>
+          </FormField>
+          <FormField v-model="form.unit" label="Satuan" required placeholder="kg, bungkus, lembar" />
+          <FormField v-model.number="form.price" label="Harga (Rp)" type="number" min="0" required />
+          <FormField v-model.number="form.stock" label="Stok" type="number" min="0" required />
         </div>
+        <FormField v-model="form.description" as="textarea" label="Deskripsi" rows="3" />
         <div>
-          <label class="mb-1 block text-xs font-bold uppercase text-stone-600">Deskripsi</label>
-          <textarea v-model="form.description" rows="3" class="field" />
-        </div>
-        <div>
-          <label class="mb-1 block text-xs font-bold uppercase text-stone-600">
-            Foto produk (JPG/PNG/WEBP, maks 2 MB)
-          </label>
-          <input type="file" accept="image/jpeg,image/png,image/webp" class="text-sm" @change="onFile" />
+          <label for="product-image" class="form-label">Foto produk (JPG/PNG/WEBP, maks 2 MB)</label>
+          <input
+            id="product-image"
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            class="text-sm"
+            @change="onFile"
+          />
         </div>
         <label v-if="editing" class="flex items-center gap-2 text-sm">
           <input v-model="form.is_active" type="checkbox" /> Produk aktif (tampil di katalog)
         </label>
 
         <div class="flex justify-end gap-2 pt-2">
-          <button type="button" class="rounded-xl border border-stone-200 px-4 py-2 text-sm font-semibold" @click="showForm = false">
+          <button type="button" class="btn-outline" @click="showForm = false">
             Batal
           </button>
           <button
             type="submit"
             :disabled="saving"
-            class="rounded-xl bg-ulos-600 px-5 py-2 text-sm font-semibold text-white hover:bg-ulos-700 disabled:opacity-60"
+            class="btn-primary"
           >
             {{ saving ? "Menyimpan..." : "Simpan" }}
           </button>
@@ -147,6 +133,7 @@
 <script setup>
 import { onMounted, reactive, ref } from "vue";
 import { Pencil, Plus, Trash2, X } from "lucide-vue-next";
+import FormField from "../../components/FormField.vue";
 import ProductImage from "../../components/ProductImage.vue";
 import { catalogApi } from "../../api/catalogApi";
 import { useCatalogStore } from "../../stores/catalogStore";
@@ -253,10 +240,3 @@ onMounted(() => {
   load();
 });
 </script>
-
-<style scoped>
-@reference "../../index.css";
-.field {
-  @apply w-full rounded-xl border border-stone-200 px-3 py-2 text-sm focus:border-ulos-600 focus:outline-none focus:ring-2 focus:ring-ulos-600/20;
-}
-</style>

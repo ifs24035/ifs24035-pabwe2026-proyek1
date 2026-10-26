@@ -15,34 +15,32 @@
       </button>
     </div>
 
-    <div v-for="f in fields" :key="f.key">
-      <label class="mb-1.5 block text-xs font-bold uppercase tracking-wide text-stone-600">{{ f.label }}</label>
-      <input
-        v-model="form[f.key]"
-        :type="f.type"
-        :required="f.required"
-        :placeholder="f.placeholder"
-        class="w-full rounded-xl border border-stone-200 px-3.5 py-2.5 text-sm focus:border-ulos-600 focus:outline-none focus:ring-2 focus:ring-ulos-600/20"
-      />
-    </div>
+    <FormField
+      v-for="f in fields"
+      :key="f.key"
+      v-model="form[f.key]"
+      :label="f.label"
+      :type="f.type"
+      :required="f.required"
+      :placeholder="f.placeholder"
+    />
 
     <template v-if="role === 'seller'">
-      <div v-for="f in sellerFields" :key="f.key">
-        <label class="mb-1.5 block text-xs font-bold uppercase tracking-wide text-stone-600">{{ f.label }}</label>
-        <input
-          v-model="form[f.key]"
-          type="text"
-          :required="f.required"
-          :placeholder="f.placeholder"
-          class="w-full rounded-xl border border-stone-200 px-3.5 py-2.5 text-sm focus:border-ulos-600 focus:outline-none focus:ring-2 focus:ring-ulos-600/20"
-        />
-      </div>
+      <FormField
+        v-for="f in sellerFields"
+        :key="f.key"
+        v-model="form[f.key]"
+        :label="f.label"
+        type="text"
+        :required="f.required"
+        :placeholder="f.placeholder"
+      />
     </template>
 
     <button
       type="submit"
       :disabled="auth.loading"
-      class="w-full rounded-xl bg-ulos-600 py-2.5 text-sm font-semibold text-white shadow-md shadow-ulos-600/25 hover:bg-ulos-700 disabled:opacity-60"
+      class="btn-primary w-full"
     >
       {{ auth.loading ? "Mendaftarkan..." : "Daftar Sekarang" }}
     </button>
@@ -52,6 +50,7 @@
 <script setup>
 import { computed, reactive, ref } from "vue";
 import { useRouter } from "vue-router";
+import FormField from "../../components/FormField.vue";
 import { useAuthStore } from "../../stores/authStore";
 import { showErrorDialog, showSuccessDialog } from "../../helpers/toolsHelper";
 
